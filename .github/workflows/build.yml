@@ -1,0 +1,103 @@
+# Automatically build the project and run any configured tests for every push
+# and submitted pull request. This can help catch issues that only occur on
+# certain platforms or Java versions, and provides a first line of defence
+# against bad commits.
+
+name: build
+on: ['pull_request', 'push']
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        # Use these Java versions
+        java: [
+          1.8,  # Minimum supported by Minecraft
+          11,   # Current Java LTS
+          15    # Latest version
+        ]
+        # and run on both Linux and Windows
+        os: [ubuntu-20.04, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      # Setup
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Validate Gradle wrapper
+        uses: gradle/wrapper-validation-action@v1
+      - name: Setup JDK ${{ matrix.java }}
+        uses: actions/setup-java@v1
+        with:
+          java-version: ${{ matrix.java }}
+      - name: Make Gradle wrapper executable
+        if: ${{ runner.os != 'Windows' }}
+        run: chmod +x ./gradlew
+      # Test
+      - name: Build
+        run: ./gradlew build
+      # Release
+      - name: Get version
+        id: semver
+        if: ${{ github.event_name == 'push' && runner.os == 'Linux' && matrix.java == '11' }}
+        run: ./gradlew semver
+      - name: Read Minecraft version
+        id: minecraft_version
+        if: ${{ github.event_name == 'push' && runner.os == 'Linux' && matrix.java == '11' }}
+        uses: christian-draeger/read-properties@1.0.1
+        with:
+          path: './gradle.properties'
+          property: 'minecraft_version'
+      - name: Add tag
+        if: ${{ github.event_name == 'push' && runner.os == 'Linux' && matrix.java == '11' }}
+        uses: anothrNick/github-tag-action@1.33.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CUSTOM_TAG: ${{ steps.semver.outputs.v_value }}
+      - name: Create release
+        if: ${{ github.event_name == 'push' && runner.os == 'Linux' && matrix.java == '11' }}
+        uses: actions/create-release@v1.1.4
+        id: releases
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.semver.outputs.v_value }}
+          release_name: Mod ${{ steps.semver.outputs.v_value }} (alpha)
+          body: '**For Minecraft ${{ steps.minecraft_version.outputs.value }}**'
+          draft: true
+          prerelease: true
+      - name: Attach release
+        if: ${{ github.event_name == 'push' && runner.os == 'Linux' && matrix.java == '11' }}
+        uses: actions/upload-release-asset@v1.0.2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.releases.outputs.upload_url }}
+          asset_path: ./build/libs/mod-${{ steps.semver.outputs.value }}.jar
+          asset_name: mod-${{ steps.semver.outputs.value }}-alpha.jar
+          asset_content_type: application/java-archive
+      - name: Attach sources
+        if: ${{ github.event_name == 'push' && runner.os == 'Linux' && matrix.java == '11' }}
+        uses: actions/upload-release-asset@v1.0.2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.releases.outputs.upload_url }}
+          asset_path: ./build/libs/mod-${{ steps.semver.outputs.value }}-sources.jar
+          asset_name: mod-${{ steps.semver.outputs.value }}-sources-alpha.jar
+          asset_content_type: application/java-archive
+      - name: Upload to CurseForge
+        if: ${{ github.event_name == 'push' && runner.os == 'Linux' && matrix.java == '11' }}
+        uses: itsmeow/curseforge-upload@v2
+        continue-on-error: true
+        with:
+          token: ${{ secrets.CURSE_FORGE_API_TOKEN }}
+          project_id: 427724
+          game_endpoint: minecraft
+          file_path: ./build/libs/mod-${{ steps.semver.outputs.value }}.jar
+          changelog: 'Automated release from GitHub, use at your own risk!'
+          display_name: mod-${{ steps.semver.outputs.value }}-alpha.jar
+          game_versions: '${{ steps.minecraft_version.outputs.value }}'
+          release_type: alpha
+          relations: fabric-api:requiredDependency

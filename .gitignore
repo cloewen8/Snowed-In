@@ -1,0 +1,48 @@
+assets/references/
+
+# gradle
+
+.gradle/
+build/
+out/
+classes/
+
+# eclipse
+
+*.launch
+
+# idea
+
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# vscode
+
+.settings/
+.vscode/
+bin/
+.classpath
+.project
+
+# macos
+
+*.DS_Store
+
+# fabric
+
+run/*
+!run/server.properties
+!run/saves
+run/saves/*
+
+# Structure design world
+
+!run/saves/StructureDesign
+run/saves/StructureDesign/session.lock
+run/saves/StructureDesign/level.dat_old
+run/saves/StructureDesign/advancements
+run/saves/StructureDesign/generated
+run/saves/StructureDesign/playerdata
+run/saves/StructureDesign/stats
