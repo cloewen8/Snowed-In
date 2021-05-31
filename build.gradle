@@ -15,17 +15,21 @@ class SemverTask extends DefaultTask {
 	}
 	
 	static def calculateVersion(Project project) {
-		String lastTag = getTag(project);
-		if (lastTag.startsWith("v"))
-			lastTag = lastTag.substring(1);
-		int[] baseInts = toIntArray(baseVersion.split("\\."));
-		int[] tagInts = toIntArray(lastTag.split("\\."));
-		int[] lastVersion;
-		if (baseInts[0] > tagInts[0] || baseInts[1] > tagInts[1] || baseInts[2] > tagInts[2])
-			lastVersion = baseInts;
-		else
-			lastVersion = tagInts;
-		return """${lastVersion[0]}.${lastVersion[1]}.${lastVersion[2] + 1}""";
+		try {
+			String lastTag = getTag(project);
+			if (lastTag.startsWith("v"))
+				lastTag = lastTag.substring(1);
+			int[] baseInts = toIntArray(baseVersion.split("\\."));
+			int[] tagInts = toIntArray(lastTag.split("\\."));
+			int[] lastVersion;
+			if (baseInts[0] > tagInts[0] || baseInts[1] > tagInts[1] || baseInts[2] > tagInts[2])
+				lastVersion = baseInts;
+			else
+				lastVersion = tagInts;
+			return """${lastVersion[0]}.${lastVersion[1]}.${lastVersion[2] + 1}""";
+		} catch (IllegalStateException e) {
+			return baseVersion;
+		}
 	}
 	
 	static def getTag(Project project) {
