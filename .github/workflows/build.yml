@@ -63,7 +63,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ steps.semver.outputs.v_value }}
-          release_name: Mod ${{ steps.semver.outputs.v_value }} (alpha)
+          release_name: Snowed-In ${{ steps.semver.outputs.v_value }} (alpha)
           body: '**For Minecraft ${{ steps.minecraft_version.outputs.value }}**'
           draft: true
           prerelease: true
@@ -74,8 +74,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.releases.outputs.upload_url }}
-          asset_path: ./build/libs/mod-${{ steps.semver.outputs.value }}.jar
-          asset_name: mod-${{ steps.semver.outputs.value }}-alpha.jar
+          asset_path: ./build/libs/snowedin-${{ steps.semver.outputs.value }}.jar
+          asset_name: snowedin-${{ steps.semver.outputs.value }}-alpha.jar
           asset_content_type: application/java-archive
       - name: Attach sources
         if: ${{ github.event_name == 'push' && runner.os == 'Linux' && matrix.java == '11' }}
@@ -95,9 +95,9 @@ jobs:
           token: ${{ secrets.CURSE_FORGE_API_TOKEN }}
           project_id: 427724
           game_endpoint: minecraft
-          file_path: ./build/libs/mod-${{ steps.semver.outputs.value }}.jar
+          file_path: ./build/libs/snowedin-${{ steps.semver.outputs.value }}.jar
           changelog: 'Automated release from GitHub, use at your own risk!'
-          display_name: mod-${{ steps.semver.outputs.value }}-alpha.jar
+          display_name: snowedin-${{ steps.semver.outputs.value }}-alpha.jar
           game_versions: '${{ steps.minecraft_version.outputs.value }}'
           release_type: alpha
           relations: fabric-api:requiredDependency

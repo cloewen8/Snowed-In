@@ -1,15 +1,3 @@
-When starting a project with this template, check the following sections:
-- RELEASE.md
-  - Verify the release process.
-  - Choose platform specific release processes.
-- .github/workflows/build.yml
-  - Remove unused release tasks
-  - For the "Create release" task, set the release_name.
-  - For the "Attach release" task, set the asset_path and asset_name.
-  - For the "Upload to CurseForge" task, set the CURSE_FORGE_API_TOKEN secret and set file_path and display_name.
-- .github/ISSUE_TEMPLATE/bug_report.md
-  - Add the mod name to Desktop.
-
 # Snowed-In
 ![build](https://github.com/cloewen8/Snowed-In/workflows/build/badge.svg)
 
@@ -21,10 +9,7 @@ Snowed-In is designed using Fabric and can be installed like any other Fabric mo
 1. If you have not already, install Fabric:
    
    https://fabricmc.net/wiki/install
-2. You will also need the Fabric API:
-   
-   https://www.curseforge.com/minecraft/mc-mods/fabric-api
-3. **It** is provided through GitHub Releases:
+2. Snowed-In is provided through GitHub Releases:
    
    **https://github.com/cloewen8/Snowed-In/releases**
    
