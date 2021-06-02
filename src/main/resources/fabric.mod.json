@@ -1,25 +1,25 @@
 {
   "schemaVersion": 1,
-  "id": "mod",
+  "id": "snowedin",
   "version": "${version}",
-  "name": "Mod",
-  "description": "Mod description!",
+  "name": "Snowed-In",
+  "description": "Causes it to snow forever.",
   "authors": [
     "Colton Loewen"
   ],
   "contact": {
     "homepage": "https://cjloewen.ca/",
-    "issues": "https://github.com/cloewen8/Mod/issues/new/choose",
-    "sources": "https://github.com/cloewen8/Mod"
+    "issues": "https://github.com/cloewen8/Snowed-In/issues/new/choose",
+    "sources": "https://github.com/cloewen8/Snowed-In"
   },
 
   "license": "Apache-2.0",
-  "icon": "assets/mod/icon.png",
+  "icon": "assets/snowedin/icon.png",
 
   "environment": "*",
   "entrypoints": {
     "main": [
-      "ca.cjloewen.mod.Mod"
+      "ca.cjloewen.snowedin.SnowedInMod"
     ]
   },
 
@@ -29,6 +29,6 @@
     "minecraft": "1.16.x"
   },
   "mixins": [
-  	"mod.mixins.json"
+  	"snowedin.mixins.json"
   ]
 }

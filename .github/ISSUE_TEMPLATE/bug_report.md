@@ -24,7 +24,7 @@ A clear and concise description of what you expected to happen.
 If applicable, add screenshots or a video to help explain your problem.
 
 **Desktop (please complete the following information):**
-- Mod version [e.g. 1.0.0]
+- Snowed-In version [e.g. 1.0.0]
 - Minecraft version [e.g. 1.0.0]
 - Fabric version [e.g. 0.1.1.12]
 - Fabric API version [e.g. 0.1.3]

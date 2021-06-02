@@ -1,9 +1,0 @@
-{
-  "required": true,
-  "package": "ca.cjloewen.mod.mixin",
-  "compatibilityLevel": "JAVA_8",
-  "mixins": [],
-  "injectors": {
-    "defaultRequire": 1
-  }
-}

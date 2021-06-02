@@ -15,8 +15,6 @@ For pre-releases and official releases, some manual preperation is needed:
 1. All in-progress features need to be finished or temporarily disabled (to be finished in a future release).
 2. The commit history and source code will be inspected for changes to document and potentially include in the release change log.
 
-**The following 3 sections are optional!**
-
 ### GitHub Release (https://github.com/cloewen8/Corntopia/releases)
 GitHub Actions will automatically create a draft pre-release of the mod.
 These releases are to be used as reference for all other platform releases.

@@ -1,0 +1,18 @@
+{
+  "required": true,
+  "package": "ca.cjloewen.snowedin.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+  	"ClientWorldPropertiesMixin",
+  	"ServerWorldPropertiesMixin",
+  	"BiomeMixin",
+  	"ServerWorldMixin",
+  	"WeatherCommandMixin",
+  	"GameRulesMixin",
+  	"GameRulesBooleanMixin",
+  	"GameRulesIntMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

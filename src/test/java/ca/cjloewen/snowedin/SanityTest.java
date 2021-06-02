@@ -1,4 +1,4 @@
-package ca.cjloewen.mod;
+package ca.cjloewen.snowedin;
 
 import org.junit.jupiter.api.Assertions;
 

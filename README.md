@@ -1,37 +1,7 @@
-# Minecraft Fabric Template
-This template is designed to start a Minecraft Fabric modification.
-
-It is based on [Corntopia](https://github.com/cloewen8/Corntopia) and shares
-many of its features and documentation.
-
 When starting a project with this template, check the following sections:
-- README.md (this file)
-  - Mod (name, badge and description)
-  - Installation (name, GitHub links and mod-specific instructions)
-  - Features (feature name, description, details and previews)
-  - Contributing (GitHub links)
-  - Pull requests (mod-specific requirements)
-  - License (verify the license, copyright date and link to the LICENSE.md file)
 - RELEASE.md
   - Verify the release process.
   - Choose platform specific release processes.
-- LICENSE.md
-  - Verify the copyright date.
-- gradle.properties
-  - Customize everything!
-- src
-  - Set package name.
-- src/main/resources/fabric.mod.json
-  - Customize everything!
-- src/main/resources/mod.mixins.json
-  - Rename mod.
-  - Add mixins.
-- src/main/java/ca/cjloewen/mod/Mod.java
-  - Prefix with the mod name.
-- src/main/java/ca/cjloewen/mod/item/Items.java
-  - Add items.
-- src/main/java/ca/cjloewen/mod/block/Blocks.java
-  - Add blocks.
 - .github/workflows/build.yml
   - Remove unused release tasks
   - For the "Create release" task, set the release_name.
@@ -40,13 +10,13 @@ When starting a project with this template, check the following sections:
 - .github/ISSUE_TEMPLATE/bug_report.md
   - Add the mod name to Desktop.
 
-# Mod
-![build](https://github.com/cloewen8/**Mod**/workflows/build/badge.svg)
+# Snowed-In
+![build](https://github.com/cloewen8/Snowed-In/workflows/build/badge.svg)
 
-**A description of the mod!**
+A Minecraft Fabric mod that will cause it to snow forever.
 
 ## Installation
-**It** is designed using Fabric and can be installed like any other Fabric mod.
+Snowed-In is designed using Fabric and can be installed like any other Fabric mod.
 
 1. If you have not already, install Fabric:
    
@@ -56,22 +26,31 @@ When starting a project with this template, check the following sections:
    https://www.curseforge.com/minecraft/mc-mods/fabric-api
 3. **It** is provided through GitHub Releases:
    
-   **https://github.com/cloewen8/Mod/releases**
+   **https://github.com/cloewen8/Snowed-In/releases**
    
    Try to pick a version that matches your Minecraft version. If a release for your version of Minecraft does not exist, try the newest release. If you experience any compatibility problems, please create a ticket:
    
-   https://github.com/cloewen8/Mod/issues/new/choose
+   https://github.com/cloewen8/Snowed-In/issues/new/choose
 
 ## Features (spoilers)
-- **Feature** - Short description.
-  - Detail.
+### Main features
+- **Infinite snow** - It snows forever!
+- **Every biome is cold** - It snows everywhere, all water can freeze.
+- **Snow piles up** - Snow will keep piling up to 3 blocks.
+  Piling can be disabled with the **doPileSnow game rule**.
+  The height of the piles can be configured with the **snowPileHeight game rule**.
+  Set snowPileHeight to 0 to have it pile up forever (up to the build limit).
 
-![Alternative text](preview/feature.png)
+### Other features
+- **Light has no effect** - It will snow regardless of light level.
+- **Snow can break blocks** - Snow can replace non-solid blocks like grass.
+
+![A snowy cabin in the woods at night.](preview/snowedin.png)
 
 ## Contributing
 __Contributions welcome!__
 
-The best way you can contribute is by providing your unique perspective in [discussions](https://github.com/cloewen8/Mod/discussions) and [issues](https://github.com/cloewen8/Mod/issues). If you want to contribute more directly, consider creating a [pull request](https://github.com/cloewen8/Mod/compare).
+The best way you can contribute is by providing your unique perspective in [discussions](https://github.com/cloewen8/Snowed-In/discussions) and [issues](https://github.com/cloewen8/Snowed-In/issues). If you want to contribute more directly, consider creating a [pull request](https://github.com/cloewen8/Mod/compare).
 
 - Be respectful and avoid destructive comments.
 - Don't use offensive language, including swear words and hate speech.
@@ -92,7 +71,7 @@ A pull request allows you to directly make changes to the mod.
 - You should test your changes and create test cases when possible. All tests must pass before the pull request is accepted. I will manually test all pull requests when possible.
 
 ## License
-Copyright 2020 Colton Loewen
+Copyright 2021 Colton Loewen
 
 Licensed under the Apache License, Version 2.0. To summarize, this allows you to:
 
@@ -106,4 +85,4 @@ Licensed under the Apache License, Version 2.0. To summarize, this allows you to
 - You provide the included license.
 - You document any changes.
 
-**This summary is not a substitute for the full license**, which is available in [LICENSE.md](https://github.com/cloewen8/Mod/blob/master/LICENSE.md).
+**This summary is not a substitute for the full license**, which is available in [LICENSE.md](https://github.com/cloewen8/Snowed-In/blob/master/LICENSE.md).
