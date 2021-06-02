@@ -93,7 +93,7 @@ jobs:
         continue-on-error: true
         with:
           token: ${{ secrets.CURSE_FORGE_API_TOKEN }}
-          project_id: 427724
+          project_id: 489816
           game_endpoint: minecraft
           file_path: ./build/libs/snowedin-${{ steps.semver.outputs.value }}.jar
           changelog: 'Automated release from GitHub, use at your own risk!'
