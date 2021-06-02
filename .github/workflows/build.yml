@@ -84,8 +84,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.releases.outputs.upload_url }}
-          asset_path: ./build/libs/mod-${{ steps.semver.outputs.value }}-sources.jar
-          asset_name: mod-${{ steps.semver.outputs.value }}-sources-alpha.jar
+          asset_path: ./build/libs/snowedin-${{ steps.semver.outputs.value }}-sources.jar
+          asset_name: snowedin-${{ steps.semver.outputs.value }}-sources-alpha.jar
           asset_content_type: application/java-archive
       - name: Upload to CurseForge
         if: ${{ github.event_name == 'push' && runner.os == 'Linux' && matrix.java == '11' }}
