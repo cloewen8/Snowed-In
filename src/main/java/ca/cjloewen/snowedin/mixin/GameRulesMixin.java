@@ -16,10 +16,8 @@ import net.minecraft.world.GameRules;
 @Mixin(GameRules.class)
 public class GameRulesMixin {
 	@Shadow
-	@Final
 	private static Map<GameRules.Key<?>, GameRules.Type<?>> RULE_TYPES;
 	@Shadow
-	@Final
 	private Map<GameRules.Key<?>, GameRules.Rule<?>> rules;
 	
 	@Inject(method = "<init>()V", at = @At("TAIL"))
