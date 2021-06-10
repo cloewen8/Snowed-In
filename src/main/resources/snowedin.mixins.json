@@ -3,7 +3,6 @@
   "package": "ca.cjloewen.snowedin.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-  	"ClientWorldPropertiesMixin",
   	"ServerWorldPropertiesMixin",
   	"BiomeMixin",
   	"ServerWorldMixin",
@@ -11,6 +10,9 @@
   	"GameRulesMixin",
   	"GameRulesBooleanMixin",
   	"GameRulesIntMixin"
+  ],
+  "client": [
+  	"ClientWorldPropertiesMixin"
   ],
   "injectors": {
     "defaultRequire": 1
