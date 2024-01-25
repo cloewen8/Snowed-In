@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '0.5-SNAPSHOT'
+	id 'fabric-loom' version '1.5-SNAPSHOT'
 }
 
 sourceCompatibility = JavaVersion.VERSION_1_8
@@ -52,7 +52,7 @@ SemverTask.baseVersion = project.mod_version
 version = SemverTask.calculateVersion(project)
 group = project.maven_group
 
-task semver(type: SemverTask) {
+tasks.register('semver', SemverTask) {
 	group = "build"
 	description = "Outputs a tag value for GitHub Actions."
 }

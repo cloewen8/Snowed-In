@@ -1,5 +1,6 @@
 package ca.cjloewen.snowedin.mixin;
 
+import it.unimi.dsi.fastutil.longs.Long2FloatLinkedOpenHashMap;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
@@ -11,9 +12,7 @@ import net.minecraft.world.biome.Biome;
 
 @Mixin(Biome.class)
 public class BiomeMixin {
-	/**
-	 * Can snow everywhere, even over non-collidable blocks.
-	 */
+	/** Can snow everywhere, even over non-collidable blocks. */
 	@Overwrite
 	public boolean canSetSnow(WorldView world, BlockPos blockPos) {
 		if (blockPos.getY() >= 0 && blockPos.getY() < 256) {
@@ -27,19 +26,15 @@ public class BiomeMixin {
 		return false;
 	}
 	
-	/**
-	 * Always snow!
-	 */
+	/** Always snow! */
 	@Overwrite
-	public Biome.Precipitation getPrecipitation() {
+	public Biome.Precipitation getPrecipitation(BlockPos pos) {
 		return Biome.Precipitation.SNOW;
 	}
-	
-	/**
-	 * Ensures it always snows and water freezes.
-	 */
+
+	/** Ensures it always snows and water freezes. */
 	@Overwrite
-	public final float getTemperature(BlockPos blockPos) {
+	public float getTemperature() {
 		return -0.5f;
 	}
 }
